@@ -38,7 +38,7 @@ def decode(digits, base):
     elif base >= 2 or base <= 36:
         sum = 0
         # Go From Last digit to First digit
-        for i in range(len(digits) - 1, -1, -1):
+        for i in range(0, len(digits)):
             # If the current digit is a letter, get its correct value; A=10 B=11 C=12...
             curDigit = (ord(digits[i].upper()) - 55) if digits[i].isalpha() else digits[i]
             # Multiply current digit by the base to its correct power.
@@ -75,16 +75,14 @@ def encode(number, base):
             hexList.extend((encode(number / 16, 16), encode(number % 16, 16)))
         return "".join(hexList)
     else:
-        baseList = []
-        if number < 10 and base > 10:
+        resultList = []
+        if number < 10 and number < base:
             return str(number)
         elif number >= 10 and number < base:
             return chr(number + 55).lower()
-        elif number < base:
-            return str(number)
         else:
-            baseList.extend((encode(number / base, base), encode(number % base, base)))
-        return "".join(baseList)
+            resultList.extend((encode(number / base, base), encode(number % base, base)))
+        return "".join(resultList)
 
 def convert(digits, base1, base2):
     """Convert given digits in base1 to digits in base2.
