@@ -6,6 +6,10 @@ def factorial(n):
     # check if n is negative or not an integer (invalid input)
     if n < 0 or not isinstance(n, int):
         raise ValueError('factorial is undefined for n = {}'.format(n))
+    if n >= 2:
+        return n * (factorial(n-1))
+    else :
+        return 1
     # implement factorial_iterative and factorial_recursive below, then
     # change this to call your implementation to verify it passes all tests
     # return factorial_iterative(n)
@@ -17,6 +21,10 @@ def factorial_iterative(n):
     pass
     # once implemented, change factorial (above) to call factorial_iterative
     # to verify that your iterative implementation passes all tests
+    product = 1
+    for i in range(1, n+1):
+        product *= i
+    return product
 
 
 def factorial_recursive(n):
@@ -34,7 +42,7 @@ def main():
     args = sys.argv[1:]  # Ignore script file name
     if len(args) == 1:
         num = int(args[0])
-        result = factorial(num)
+        result = factorial_iterative(num)
         print('factorial({}) => {}'.format(num, result))
     else:
         print('Usage: {} number'.format(sys.argv[0]))
