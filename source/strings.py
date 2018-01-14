@@ -4,24 +4,82 @@ def contains(text, pattern):
     """Return a boolean indicating whether pattern occurs in text."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    # TODO: Implement contains here (iteratively and/or recursively)
-
+    # Of Course there is an empty string in a string
+    if pattern == '':
+        return True
+    # Search Every Char in String
+    for i in range(0, len(text)):
+        # If we find the first letter of the pattern
+        if text[i] == pattern[0]:
+            # See if we can get the rest of it
+            for j in range(0, len(pattern)):
+                # If the pattern is longer than our remaining string letters
+                # Or the we end up finding a fault
+                if i + j > len(text) - 1 or not text[i + j] == pattern[j]:
+                    # fugetabowtit
+                    break
+                # otherwise if we made it to the end and it still works
+                elif i + j == i + len(pattern) - 1 and text[i + j] == pattern[j]:
+                    # Found!!
+                    return True
+    # All letters have been went through
+    return False
 
 def find_index(text, pattern):
     """Return the starting index of the first occurrence of pattern in text,
     or None if not found."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    # TODO: Implement find_index here (iteratively and/or recursively)
-
+    # Of Course there is an empty string in a string
+    if pattern == '':
+        return 0
+    # Search Every Char in String
+    for i in range(0, len(text)):
+        # If we find the first letter of the pattern
+        if text[i] == pattern[0]:
+            # See if we can get the rest of it
+            for j in range(0, len(pattern)):
+                # If the pattern is longer than our remaining string letters
+                # Or the we end up finding a fault
+                if i + j > len(text) - 1 or not text[i + j] == pattern[j]:
+                    # fugetabowtit
+                    break
+                # otherwise if we made it to the end and it still works
+                elif i + j == i + len(pattern) - 1 and text[i + j] == pattern[j]:
+                    # Return that starting index
+                    return i
+    # All Letters have been searched, not found
+    return None
 
 def find_all_indexes(text, pattern):
     """Return a list of starting indexes of all occurrences of pattern in text,
     or an empty list if not found."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    # TODO: Implement find_all_indexes here (iteratively and/or recursively)
+    # Store our indices
+    indexList = []
+    # Of Course there is an empty string in a string
+    if pattern == '':
+        # Return every index in the string
+        return [i for i, char in enumerate(text)]
 
+    # Search Every Char in String
+    for i in range(0, len(text)):
+        # If we find the first letter of the pattern
+        if text[i] == pattern[0]:
+            # See if we can get the rest of it
+            for j in range(0, len(pattern)):
+                # If the pattern is longer than our remaining string letters
+                # Or the we end up finding a fault
+                if i + j > len(text) - 1 or not text[i + j] == pattern[j]:
+                    #fugetabowtit
+                    break
+                # otherwise if we made it to the end and it still works
+                elif i + j == i + len(pattern) - 1 and text[i + j] == pattern[j]:
+                    # Add that starting index to our list!
+                    indexList.append(i)
+
+    return indexList
 
 def test_string_algorithms(text, pattern):
     found = contains(text, pattern)

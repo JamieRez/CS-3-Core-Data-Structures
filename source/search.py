@@ -20,8 +20,6 @@ def linear_search_recursive(array, item, index=0):
     if index > len(array) - 1:
         return None
     else:
-        print(index)
-        print(array[index])
         if array[index] == item:
             return index
         else:
@@ -37,7 +35,6 @@ def binary_search(array, item):
 
 
 def binary_search_iterative(array, item):
-    array.sort()
     left = 0
     right = len(array)
     while(not right - 1 == left):
@@ -56,7 +53,6 @@ def binary_search_iterative(array, item):
 
 
 def binary_search_recursive(array, item, left=None, right=None):
-    array.sort()
     if left is None and right is None:
         left = 0
         right = len(array)
