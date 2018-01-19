@@ -38,6 +38,7 @@ def is_palindrome_recursive(text, left=None, right=None):
     if left is None and right is None:
         left = len(text) // 2 - 1
         right = math.ceil(len(text) / 2)
+
     if left < 0:
         return True
     else:

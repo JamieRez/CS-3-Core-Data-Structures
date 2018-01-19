@@ -19,6 +19,7 @@ class StringsTest(unittest.TestCase):
         assert contains('aaa', 'aa') is True  # overlapping pattern
         assert contains('aabbc', 'bbc') is True
         assert contains('abbada', 'bad') is True
+        assert contains('aaaaab', 'aaab') is True
 
     def test_contains_with_non_matching_patterns(self):
         # Negative test cases (counterexamples) with non-matching patterns
